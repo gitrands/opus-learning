@@ -6,7 +6,8 @@
     "build": "rimraf dist && npx tsc && cpx \"src/seed/data/**/*\" dist/seed/data",
     "start": "npm run build && node dist/index.js",
     "dev": "npm run build && concurrently \"npx tsc -w\" \"nodemon --exec ts-node src/index.ts\"",
-    "seed": "ts-node src/seed/seedDynamodb.ts"
+  "seed": "ts-node src/seed/seedDynamodb.ts",
+  "enroll:demo": "ts-node src/scripts/enrollDemoUser.ts"
   },
   "keywords": [],
   "author": "",

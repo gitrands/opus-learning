@@ -115,7 +115,7 @@ const CourseEditor = () => {
                 />
                 <Button
                   type="submit"
-                  className="bg-primary-700 hover:bg-primary-600"
+                  className="bg-brand-600 hover:bg-brand-500"
                 >
                   {methods.watch("courseStatus")
                     ? "Update Published Course"
@@ -185,10 +185,10 @@ const CourseEditor = () => {
                   onClick={() =>
                     dispatch(openSectionModal({ sectionIndex: null }))
                   }
-                  className="border-none text-primary-700 group"
+                  className="border-none text-brand-500 group"
                 >
-                  <Plus className="mr-1 h-4 w-4 text-primary-700 group-hover:white-100" />
-                  <span className="text-primary-700 group-hover:white-100">
+                  <Plus className="mr-1 h-4 w-4 text-brand-500 group-hover:white-100" />
+                  <span className="text-brand-500 group-hover:white-100">
                     Add Section
                   </span>
                 </Button>

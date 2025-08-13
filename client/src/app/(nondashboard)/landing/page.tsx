@@ -68,7 +68,7 @@ const Landing = () => {
         initial={{ y: 20, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="landing__hero"
+  className="landing__hero hero-gradient"
       >
         <div className="landing__hero-content">
           <h1 className="landing__title">Courses</h1>

@@ -11,10 +11,21 @@ export const getUserEnrolledCourses = async (
 ): Promise<void> => {
   const { userId } = req.params;
   const auth = getAuth(req);
+  const devBypassUserId = process.env.DEV_BYPASS_USER_ID;
+  const devBypassSecret = process.env.DEV_BYPASS_SECRET; // optional simple shared secret
+  const providedSecret = req.headers["x-dev-bypass-secret"] as string | undefined;
+  const isDev = process.env.NODE_ENV !== "production";
 
-  if (!auth || auth.userId !== userId) {
-    res.status(403).json({ message: "Access denied" });
-    return;
+  const bypassAllowed =
+    isDev &&
+    devBypassUserId === userId &&
+    (!devBypassSecret || (providedSecret && providedSecret === devBypassSecret));
+
+  if (!bypassAllowed) {
+    if (!auth || auth.userId !== userId) {
+      res.status(403).json({ message: "Access denied" });
+      return;
+    }
   }
 
   try {
@@ -28,9 +39,8 @@ export const getUserEnrolledCourses = async (
       data: courses,
     });
   } catch (error) {
-    res
-      .status(500)
-      .json({ message: "Error retrieving enrolled courses", error });
+  console.error("Error retrieving enrolled courses:", error);
+  res.status(500).json({ message: "Error retrieving enrolled courses" });
   }
 };
 

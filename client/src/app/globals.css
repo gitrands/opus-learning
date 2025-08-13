@@ -39,29 +39,30 @@ input[type="color"] {
   :root {
     --sidebar-background: theme("colors.customgreys.primarybg");
     --sidebar-foreground: theme("colors.white.50");
-    --sidebar-primary: theme("colors.primary.700");
+  /* Shift primary tone to new brand palette for crisper contrast */
+  --sidebar-primary: theme("colors.brand.600");
     --sidebar-primary-foreground: theme("colors.white.50");
     --sidebar-accent: theme("colors.customgreys.darkerGrey");
     --sidebar-accent-foreground: theme("colors.customgreys.dirtyGrey");
     --sidebar-border: theme("colors.customgreys.secondarybg");
-    --sidebar-ring: theme("colors.primary.700");
+  --sidebar-ring: theme("colors.brand.600");
     --popover: theme("colors.customgreys.primarybg");
     --popover-foreground: theme("colors.white.50");
 
     --background: theme("colors.customgreys.primarybg");
     --foreground: theme("colors.white.50");
 
-    --primary: theme("colors.primary.700");
+  --primary: theme("colors.brand.600");
     --primary-foreground: theme("colors.white.50");
 
-    --muted: theme("colors.primary.600");
+  --muted: theme("colors.brand.400");
     --muted-foreground: theme("colors.customgreys.dirtyGrey");
 
-    --accent: theme("colors.primary.600");
+  --accent: theme("colors.brand.500");
     --accent-foreground: theme("colors.white.50");
 
     --border: theme("colors.customgreys.secondarybg");
-    --ring: theme("colors.primary.700");
+  --ring: theme("colors.brand.600");
 
     --card: theme("colors.customgreys.primarybg");
     --card-foreground: theme("colors.white.50");
@@ -70,33 +71,62 @@ input[type="color"] {
   .dark {
     --sidebar-background: theme("colors.customgreys.primarybg");
     --sidebar-foreground: theme("colors.white.50");
-    --sidebar-primary: theme("colors.primary.700");
+    --sidebar-primary: theme("colors.brand.600");
     --sidebar-primary-foreground: theme("colors.white.50");
     --sidebar-accent: theme("colors.customgreys.darkerGrey");
     --sidebar-accent-foreground: theme("colors.customgreys.dirtyGrey");
     --sidebar-border: theme("colors.customgreys.secondarybg");
-    --sidebar-ring: theme("colors.primary.700");
+    --sidebar-ring: theme("colors.brand.600");
     --popover: theme("colors.customgreys.primarybg");
     --popover-foreground: theme("colors.white.50");
 
     --background: theme("colors.customgreys.primarybg");
     --foreground: theme("colors.white.50");
 
-    --primary: theme("colors.primary.700");
+    --primary: theme("colors.brand.600");
     --primary-foreground: theme("colors.white.50");
 
-    --muted: theme("colors.primary.600");
+    --muted: theme("colors.brand.400");
     --muted-foreground: theme("colors.customgreys.dirtyGrey");
 
-    --accent: theme("colors.primary.600");
+    --accent: theme("colors.brand.500");
     --accent-foreground: theme("colors.white.50");
 
     --border: theme("colors.customgreys.secondarybg");
-    --ring: theme("colors.primary.700");
+    --ring: theme("colors.brand.600");
 
     --card: theme("colors.customgreys.primarybg");
     --card-foreground: theme("colors.white.50");
   }
+}
+
+@layer utilities {
+  /* Subtle visual elevation + gradient accents */
+  .elevated-card {
+    @apply bg-gradient-to-br from-customgreys-secondarybg/70 to-customgreys-secondarybg/30 backdrop-blur-sm border border-white-50/10 shadow-inner shadow-black/20; 
+  }
+
+  .brand-focus {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/70 focus-visible:ring-offset-2 focus-visible:ring-offset-customgreys-primarybg transition-shadow duration-200;
+  }
+
+  /* Enhance hover states for buttons using new brand palette */
+  button, .btn {
+    @apply transition-colors duration-200;
+  }
+  button.bg-primary-700:hover, .btn.bg-primary-700:hover {
+    @apply bg-brand-500;
+  }
+
+  /* Gradient utility for hero sections */
+  .hero-gradient {
+    background: radial-gradient(circle at 20% 20%, theme("colors.brand.700") 0%, transparent 60%),
+      radial-gradient(circle at 80% 30%, theme("colors.brand.500") 0%, transparent 55%),
+      linear-gradient(145deg, rgba(20,24,32,0.9) 0%, rgba(20,24,32,0.6) 60%, rgba(20,24,32,0.9) 100%);
+  }
+
+  /* Muted text tweak for readability */
+  .text-muted-soft { @apply text-gray-400; }
 }
 
 .bg-sidebar {

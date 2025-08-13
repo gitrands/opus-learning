@@ -22,6 +22,20 @@ const config = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        // New refreshed brand palette (slightly more vibrant blue)
+        brand: {
+          50: '#f5f8ff',
+          100: '#e6efff',
+          200: '#c9ddff',
+            300: '#a0c2ff',
+          400: '#6e9dff',
+          500: '#4374ff',
+          600: '#1f55ff',
+          700: '#1544e6',
+          800: '#0f34b4',
+          900: '#0d2c91',
+          950: '#071b5c'
+        },
         destructive: {
           DEFAULT: "hsl(var(--destructive))",
           foreground: "hsl(var(--destructive-foreground))",
@@ -91,6 +105,7 @@ const config = {
           foreground: "hsl(var(--secondary-foreground))",
         },
         white: {
+          DEFAULT: "#ffffff",
           "50": "#d2d2d2",
           "100": "#ffffff",
         },

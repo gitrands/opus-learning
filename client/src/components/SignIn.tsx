@@ -44,7 +44,7 @@ const SignInComponent = () => {
           },
           formFieldLabel: "text-white-50 font-normal",
           formButtonPrimary:
-            "bg-primary-700 text-white-100 hover:bg-primary-600 !shadow-none",
+            "bg-brand-600 text-white-100 hover:bg-brand-500 !shadow-none",
           formFieldInput: "bg-customgreys-primarybg text-white-50 !shadow-none",
           footerActionLink: "text-primary-750 hover:text-primary-600",
         },

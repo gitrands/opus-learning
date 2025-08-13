@@ -20,7 +20,7 @@ const CompletionPage = () => {
       <div className="completion__support">
         <p>
           Need help? Contact our{" "}
-          <Button variant="link" asChild className="p-0 m-0 text-primary-700">
+          <Button variant="link" asChild className="p-0 m-0 text-brand-500 hover:text-brand-400">
             <a href="mailto:support@example.com">customer support</a>
           </Button>
           .

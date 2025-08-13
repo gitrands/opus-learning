@@ -21,6 +21,15 @@ import { useGetTransactionsQuery } from "@/state/api";
 import { useUser } from "@clerk/nextjs";
 import React, { useState } from "react";
 
+// Deterministic date formatter (UTC) to avoid SSR/CSR locale mismatch
+const formatDate = (iso: string) => {
+  const d = new Date(iso);
+  const y = d.getUTCFullYear();
+  const m = String(d.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(d.getUTCDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+};
+
 const UserBilling = () => {
   const [paymentType, setPaymentType] = useState("all");
   const { user, isLoaded } = useUser();
@@ -85,7 +94,7 @@ const UserBilling = () => {
                       key={transaction.transactionId}
                     >
                       <TableCell className="billing__table-cell">
-                        {new Date(transaction.dateTime).toLocaleDateString()}
+                        {formatDate(transaction.dateTime)}
                       </TableCell>
                       <TableCell className="billing__table-cell billing__amount">
                         {formatPrice(transaction.amount)}

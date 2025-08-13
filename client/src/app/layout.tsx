@@ -5,6 +5,7 @@ import Providers from "./providers";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
+import DemoCredentialsPopup from "@/components/DemoCredentialsPopup";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],
@@ -28,8 +29,11 @@ export default function RootLayout({
         <body className={`${dmSans.className}`}>
           <Providers>
             <Suspense fallback={null}>
-              <div className="root-layout">{children}</div>
+              <div className="root-layout" suppressHydrationWarning>
+                {children}
+              </div>
             </Suspense>
+            <DemoCredentialsPopup />
             <Toaster richColors closeButton />
           </Providers>
         </body>
